@@ -13,13 +13,8 @@ app.config(function($routeProvider,$locationProvider){
 });
 app.controller('maincontroller',function(){
     var socket = io.connect('http://localhost:3334');
-    var id = LoopBackAuth.accessTokenId;
-    var userId = LoopBackAuth.currentUserId;
-    socket.on('connect', function(){
-        socket.emit('authentication', {id: id, userId: userId });
-        socket.on('authenticated', function() {
-            // use the socket as usual
-            console.log('User is authenticated');
-        });
+    socket.on('welcome-message', function(data) {
+        
+        console.log(data);
     });
-});
+    });
