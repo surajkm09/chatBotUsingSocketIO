@@ -12,9 +12,11 @@ app.config(function($routeProvider,$locationProvider){
 
 });
 app.controller('maincontroller',function(){
-    var socket = io.connect('http://localhost:3334');
+    var socket = io.connect('http://localhost:3334',{query:'name=something&lastname=kumar'});
     socket.on('welcome-message', function(data) {
         
         console.log(data);
     });
+
+    socket.emit('authenticationDetails','{userName:suraj,pass:root}');
     });
